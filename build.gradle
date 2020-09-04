@@ -20,6 +20,7 @@ dependencies {
     testImplementation 'com.codeborne:selenide:5.11.0'
     testImplementation 'mysql:mysql-connector-java:8.0.18'
     testImplementation 'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
 test {
