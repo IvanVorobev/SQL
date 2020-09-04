@@ -25,7 +25,7 @@ public class DeadlineTest {
     }
 
     @Test
-    void loginButtonShoulBeDisableIfEnterInvalidPasswordThreeTimes() {
+    void loginButtonShoulBeDisableIfEnterInvalidPasswordOverThreeTimes() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
         loginPage.invalidPassword();
