@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 
+import java.rmi.activation.Activatable;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
@@ -21,16 +23,6 @@ public class LoginPage {
     public void invalidPassword() {
         loginField.setValue(DataHelper.getAuthInfo().getLogin());
         passwordField.setValue(DataHelper.getAuthInfoWithInvalidPassword().getLogin());
-        loginButton.click();
-        clearPasswordField();
-        passwordField.setValue(DataHelper.getAuthInfoWithInvalidPassword().getLogin());
-        loginButton.click();
-        clearPasswordField();
-        passwordField.setValue(DataHelper.getAuthInfoWithInvalidPassword().getLogin());
-        loginButton.click();
-        clearPasswordField();
-        passwordField.setValue(DataHelper.getAuthInfoWithInvalidPassword().getLogin());
-        loginButton.click();
     }
 
     public void loginButtonShouldNotBeVisible() {
@@ -40,5 +32,14 @@ public class LoginPage {
     public void clearPasswordField() {
         passwordField.doubleClick();
         passwordField.sendKeys(Keys.DELETE);
+    }
+
+    public void clearLoginField() {
+        loginField.doubleClick();
+        loginField.sendKeys(Keys.DELETE);
+    }
+
+    public void pushLoginButton(){
+        loginButton.click();
     }
 }

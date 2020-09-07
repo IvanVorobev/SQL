@@ -25,16 +25,26 @@ public class DeadlineTest {
     }
 
     @Test
-    void loginButtonShoulBeDisableIfEnterInvalidPasswordOverThreeTimes() {
+    void loginButtonShoulBeDisableIfEnterInvalidPasswordThreeTimes() {
         open("http://localhost:9999");
         val loginPage = new LoginPage();
+        int i = 1;
+        while (i <= 2) {
+            loginPage.invalidPassword();
+            loginPage.pushLoginButton();
+            loginPage.clearLoginField();
+            loginPage.clearPasswordField();
+            i++;
+        }
         loginPage.invalidPassword();
+        loginPage.pushLoginButton();
         loginPage.loginButtonShouldNotBeVisible();
     }
 
     @AfterAll
     static void clean() throws SQLException {
-        SQLUtils.cleanAuthCodesTable();
+        SQLUtils.cleanAuthCodesAndUsersTables();
     }
 }
+
 
