@@ -15,12 +15,15 @@ public class SQLUtils {
     }
 
     public static void cleanAuthCodesAndUsersTables() throws SQLException {
+        String deleteCards = "DELETE FROM cards; ";
         String deleteAuthCodes = "DELETE FROM auth_codes; ";
         String deleteUsers = "DELETE FROM users; ";
         try (val conn = SQLUtils.getConnection();
+             val deleteCardsStmt = conn.createStatement();
              val deleteAuthCodesStmt = conn.createStatement();
              val deleteUsersStmt = conn.createStatement();
         ) {
+            deleteCardsStmt.executeUpdate(deleteCards);
             deleteAuthCodesStmt.executeUpdate(deleteAuthCodes);
             deleteUsersStmt.executeUpdate(deleteUsers);
         }
